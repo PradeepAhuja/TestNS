@@ -15,6 +15,15 @@ export class ItemsComponent implements OnInit {
   imageDatabaseName="T2T_Images.db";
   constructor(private itemService: ItemService) {}
   currentImagesDatabase: any=null;
+  iosProperty(_this, property) {
+    if (typeof property === "function") {
+        // xCode < 8
+        return property.call(_this);
+    } else {
+        // xCode >= 8
+        return property;
+    }
+}
   ngOnInit(): void {
     let imageDBPath = fs.knownFolders.currentApp().path;
     //imageDBPath =path.join(imageDBPath, "/assets/appimages");  
@@ -22,18 +31,18 @@ export class ItemsComponent implements OnInit {
     console.log("aaaaa12",Sqlite.exists(this.imageDatabaseName));
     //console.log("ddddd",Sqlite.exists(imageDBPath));
     //console.log(imageDBPath);
-    let localPath=this.imageDatabaseName + "ABCDe";
+    let localPath=this.imageDatabaseName + "ABCDee";
     console.log("eeeee12",Sqlite.exists(localPath));
     if (!Sqlite.exists(localPath)) {
       //Sqlite.copyDatabase(this.imageDatabaseName,localPath);
       
       if(isIOS)
       {
-        //const fileManager = Sqlite.iosProperty(NSFileManager, NSFileManager.defaultManager);
+        const fileManager = this.iosProperty(NSFileManager, NSFileManager.defaultManager);
 
         let destination = path.join(fs.knownFolders.documents().path ,localPath);
-        NSFileManager.defaultManager.copyItemAtPathToPathError(imageDBPath, destination);
-        console.log("qqqqqqqqqqqqqqqqqqqqqq");
+        fileManager.copyItemAtPathToPathError(imageDBPath, destination,null);
+        console.log("qqqqqqqqqqqqqqqq2qq1qqq1q");
       }
       else
       {
