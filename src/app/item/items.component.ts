@@ -41,12 +41,13 @@ export class ItemsComponent implements OnInit {
       this.currentImagesDatabase = db;
       this.currentImagesDatabase.resultType(Sqlite.RESULTSASOBJECT);
       let sql=`SELECT uniqueID,imageURL,imageType FROM ImageGallery order by imageType,imageURL limit 1`;
+      let thisClass=this;
       this.currentImagesDatabase.all(
         sql,
         [],
           function(err, dbResponse) {
             console.log(dbResponse);
-            this.markFileAsDownloaded([dbResponse[0].uniqueID],false);
+            thisClass.markFileAsDownloaded([dbResponse[0].uniqueID],false);
           });
     },
     error => {
