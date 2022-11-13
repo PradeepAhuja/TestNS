@@ -4,9 +4,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    
     "startCommand": "./node_modules/.bin/setup-nativescript-stackblitz && npx ns preview"
-    },
+  },
   "dependencies": {
     "@angular/animations": "~14.2.0",
     "@angular/common": "~14.2.0",
@@ -18,6 +17,7 @@
     "@angular/router": "~14.2.0",
     "@nativescript/angular": "~14.2.0",
     "@nativescript/core": "~8.3.0",
+    "@nativescript/ios": "^8.3.3",
     "@nativescript/theme": "~3.0.2",
     "nativescript-sqlite": "^2.8.6",
     "rxjs": "~7.5.0",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~14.2.0",
     "@angular/compiler-cli": "~14.2.0",
+    "@nativescript/android": "8.3.1",
     "@nativescript/preview-cli": "1.0.2",
     "@nativescript/stackblitz": "0.0.5",
     "@nativescript/tailwind": "^2.0.1",
