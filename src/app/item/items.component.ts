@@ -18,15 +18,15 @@ export class ItemsComponent implements OnInit {
   ngOnInit(): void {
     let imageDBPath = fs.knownFolders.currentApp().path;
     //imageDBPath =path.join(imageDBPath, "/assets/appimages");  
-    //imageDBPath = path.join(imageDBPath, this.imageDatabaseName);  
+    imageDBPath = path.join(imageDBPath, this.imageDatabaseName);  
     console.log("aaaaa12",Sqlite.exists(this.imageDatabaseName));
-    console.log("ddddd",Sqlite.exists(imageDBPath));
-    console.log(imageDBPath);
-    let localPath=this.imageDatabaseName + "1112";
-    console.log("eeeee",Sqlite.exists(localPath));
+    //console.log("ddddd",Sqlite.exists(imageDBPath));
+    //console.log(imageDBPath);
+    let localPath=this.imageDatabaseName + "ABCDe";
+    console.log("eeeee12",Sqlite.exists(localPath));
     if (!Sqlite.exists(localPath)) {
-      Sqlite.copyDatabase(this.imageDatabaseName);
-      /*
+      //Sqlite.copyDatabase(this.imageDatabaseName,localPath);
+      
       if(isIOS)
       {
         //const fileManager = Sqlite.iosProperty(NSFileManager, NSFileManager.defaultManager);
@@ -39,7 +39,7 @@ export class ItemsComponent implements OnInit {
       {
         Sqlite.copyDatabase(imageDBPath);
       }
-      */
+      
       
     }
     console.log("eeeeeeeeeeeeeeeeeeeeeeeeeee");
@@ -54,7 +54,7 @@ export class ItemsComponent implements OnInit {
         sql,
         [],
           function(err, dbResponse) {
-            console.log("dbResponsedbResponse",dbResponse);
+            console.log("dbResponsedbResponse",dbResponse,err);
             thisClass.markFileAsDownloaded([dbResponse[0].uniqueID],false);
           });
     },
